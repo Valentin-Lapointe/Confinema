@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
+	'hostname' => 'mysql-valentin-lapointe.alwaysdata.net',
+	'username' => '170323',
+	'password' => 'rsW9jTmxBvqb88AzZcPk7iLgdp3Yrm',
+	'database' => 'valentin-lapointe_confinema',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
