@@ -18,18 +18,19 @@ class Utilisateur_model extends CI_Model {
     function validate($login,$password)
     {
         $this->db->where($this->email, $login);
-        $this->db->where($this->password, $password);
         $query = $this->db->get($this->table);
+        $user = $query->row();
 
-        if($query->num_rows() == 1)
-        {
-            $data = $query->row();
-            return $data;
-        }
-        else
-        {
+        if($user){
+            if(password_verify($password, $user->password)){
+                return $user;
+            }else{
+                return FALSE;
+            }
+        }else{
             return FALSE;
         }
+
     }
 
     function get($id)
