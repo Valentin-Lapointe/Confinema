@@ -25,6 +25,7 @@ class Connexion extends CI_Controller {
                 $data = array(
                     'id'			    => $user->id_utilisateur,
                     'email'			    => $user->email,
+                    'admin'			    => $user->admin,
                 );
                 $this->session->set_userdata($data);
 
@@ -42,6 +43,12 @@ class Connexion extends CI_Controller {
         // Chargement de la vue
         $data['main_content'] = 'Connexion/index';
         $this->load->view('_templates/template',$data);
+    }
+
+    public function deconnexion(){
+        // On supprime la session et on redirige vers le formulaire de connexion
+        $this->session->sess_destroy();
+        redirect('connexion', 'refresh');
     }
 
 }
