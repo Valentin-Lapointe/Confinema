@@ -7,32 +7,50 @@
 </head>
 <body>
 
+<?php
+if($this->session->userdata('id')) :
+?>
 <div class="container">
 
     <div class="row">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light col-lg-12">
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-<!--                    <li class="nav-item active">-->
-<!--                        <a class="nav-link" href="--><?PHP //echo base_url("Accueil");?><!--">Accueil <span class="sr-only">(current)</span></a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" href="--><?PHP //echo base_url("Historique");?><!--">Historique</a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" href="--><?PHP //echo base_url("Graphique");?><!--">Graphique</a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" href="--><?PHP //echo base_url("Tableau");?><!--">Tableau</a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" href="--><?PHP //echo base_url("Parametre");?><!--">Parametre</a>-->
-<!--                    </li>-->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active mr-4">
+                        <a class="nav-link" href="<?PHP echo base_url("Accueil");?>">Accueil</a>
+                    </li>
+                    <li class="nav-item mr-4">
+                        <a class="nav-link" href="<?PHP echo base_url("Recherche");?>">Rechercher</a>
+                    </li>
+                    <li class="nav-item mr-4">
+                        <a class="nav-link" href="<?PHP echo base_url("Favoris");?>">Favoris</a>
+                    </li>
+                    <li class="nav-item mr-4">
+                        <a class="nav-link" href="<?PHP echo base_url("Cinema");?>">Cinémas</a>
+                    </li>
+                    <li class="nav-item mr-4">
+                        <a class="nav-link" href="<?PHP echo base_url("Profil");?>">Profil</a>
+                    </li>
+                    <?php
+                    if($this->session->userdata('admin') == 1) :
+                    ?>
+                    <li class="nav-item mr-4">
+                        <a class="nav-link" href="<?PHP echo base_url("Admin");?>">Admin</a>
+                    </li>
+                    <?php
+                    endif;
+                    ?>
                 </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <a class="nav-link" href="<?PHP echo base_url("Connexion/deconnexion");?>">Deconnexion</a>
+                </form>
             </div>
         </nav>
 
     </div>
 
 </div>
+<?php
+endif;
+?>
