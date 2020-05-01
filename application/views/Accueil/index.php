@@ -21,8 +21,20 @@
                             <img src="<?php echo'https://image.tmdb.org/t/p/w220_and_h330_face/'.$item->poster_path ?>" style="height: 300px;width: 200px">
                         </div>
                         <div class="col-lg-9">
-                            <h4 class="text-center mb-5"><?php echo $item->title ?></h4>
-                            <p class="mt-5"><?php echo $item->overview ?></p>
+                            <a href="<?php echo base_url('Accueil/afficher/'.$item->id) ?>"><h4 class="text-center mb-5 font-weight-bold"><?php echo $item->title ?></h4></a>
+
+                                <?php
+                                if(!empty($item->overview)) :
+                                ?>
+                                <p class="mt-5"><?php echo $item->overview; ?></p>
+                                <?php
+                                else :
+                                ?>
+                                <p class="mt-5 text-center font-italic">Inconnu</p>
+                                <?php
+                                endif;
+                                ?>
+
                         </div>
                     </div>
 
@@ -56,8 +68,8 @@
                             <h4 class="text-center mb-5"><?php echo $item->title ?></h4>
                             <p class="mt-5"><?php echo $item->overview ?></p>
                         </div>
-                    </div>
 
+                    </div>
                 </td>
             </tr>
         <?php

@@ -48,6 +48,25 @@ class Accueil extends CI_Controller {
 
     }
 
+    public function afficher($id_film){
+
+
+        //on recupere les details du film
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://api.themoviedb.org/3/movie/".$id_film."?api_key=8c4a8b091b58321c8ace66e82747bcb9&language=fr-FR");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        $film = json_decode($output);
+        $data['details'] = $film;
+
+        // Chargement de la vue
+        $data['main_content'] = 'Accueil/afficher';
+        $data['css_file']		= $this->load_css();
+        $data['js_file']		= $this->load_js();
+        $this->load->view('_templates/template',$data);
+    }
+
 
     private function load_css($css_file = 'css')
     {
