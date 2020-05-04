@@ -27,12 +27,12 @@ class Profil extends CI_Controller
 
     private function load_css($css_file = 'css')
     {
-        return $this->load->view('Accueil/inc/'.$css_file,'');
+        return $this->load->view('Profil/inc/'.$css_file,'',TRUE);
     }
 
-    private function load_js($js_file = 'js')
+    private function load_js($js_file = 'js',$data = array())
     {
-        return $this->load->view('Accueil/inc/'.$js_file,'');
+        return $this->load->view('Profil/inc/'.$js_file,($data) ? $data :'',TRUE);
     }
 
 }

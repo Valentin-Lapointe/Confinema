@@ -59,9 +59,6 @@ class Inscription extends CI_Controller {
             }else{
                 $data['verify'] = 1;
             }
-
-        }else{
-            $data['error'] = 1;
         }
 
         // Chargement de la vue

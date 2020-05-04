@@ -40,6 +40,12 @@ class Utilisateur_model extends CI_Model {
         return $query->row();
     }
 
+    function getAll()
+    {
+        $query = $this->db->get($this->table);
+        return $query->result();
+    }
+
     function insert($data)
     {
         $this->db->insert($this->table, $data);
