@@ -25,40 +25,45 @@ class Recherche extends CI_Controller
     public function ajax_getMovies(){
         $name = $this->input->post('name');
 
-        //on recupere les details du film
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "https://api.themoviedb.org/3/search/movie?api_key=8c4a8b091b58321c8ace66e82747bcb9&language=fr-FR&query=".$name);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $output = curl_exec($ch);
-        curl_close($ch);
-        $film = json_decode($output);
-        $movies = $film->results;
-
         $html = '';
-        foreach ($movies as $item) {
 
-            $html .= '<tr>';
+        if(!empty($name))
+        {
+            //on recupere les details du film
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "https://api.themoviedb.org/3/search/movie?api_key=8c4a8b091b58321c8ace66e82747bcb9&language=fr-FR&query=".$name);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $output = curl_exec($ch);
+            curl_close($ch);
+            $film = json_decode($output);
+
+            $movies = $film->results;
+
+            foreach ($movies as $item) {
+
+                $html .= '<tr>';
                 $html .= '<td>';
-                    $html .= '<div class="row">';
-                        $html .= '<div class="col-lg-3">';
-                            $html .= '<img src="https://image.tmdb.org/t/p/w220_and_h330_face/'.$item->poster_path.'" style="height: 300px;width: 200px">';
-                        $html .= '</div>';
-                        $html .= '<div class="col-lg-9">';
-                            $html .= '<a href="'.base_url('Accueil/afficher/'.$item->id).'"><h4 class="text-center mb-5 font-weight-bold">'.$item->title.'</h4></a>';
+                $html .= '<div class="row">';
+                $html .= '<div class="col-lg-3">';
+                $html .= '<img src="https://image.tmdb.org/t/p/w220_and_h330_face/' . $item->poster_path . '" style="height: 300px;width: 200px">';
+                $html .= '</div>';
+                $html .= '<div class="col-lg-9">';
+                $html .= '<a href="' . base_url('Accueil/afficher/' . $item->id) . '"><h4 class="text-center mb-5 font-weight-bold">' . $item->title . '</h4></a>';
 
-                                if(!empty($item->overview)) :
-                                $html .= '<p class="mt-5">'.$item->overview.'</p>';
-                                else :
-                                $html.= '<p class="mt-5 text-center font-italic">Inconnu</p>';
-                                endif;
+                if (!empty($item->overview)) :
+                    $html .= '<p class="mt-5">' . $item->overview . '</p>';
+                else :
+                    $html .= '<p class="mt-5 text-center font-italic">Inconnu</p>';
+                endif;
 
-                        $html .= '</div>';
-                    $html .= '</div>';
+                $html .= '</div>';
+                $html .= '</div>';
                 $html .= '</td>';
-            $html .= '</tr>';
+                $html .= '</tr>';
 
+            }
         }
-
+        
         echo $html;
     }
 
