@@ -21,26 +21,26 @@ if($this->session->userdata('id')) :
         <nav class="navbar navbar-expand-lg navbar-light bg-light col-lg-12">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active mr-4">
-                        <a class="nav-link" href="<?PHP echo base_url("Accueil");?>">Accueil</a>
+                    <li class="nav-item <?php if($menu == 'accueil') : echo 'active'; endif ?> mr-4">
+                        <a class="nav-link <?php if($menu == 'accueil') : echo 'font-weight-bold'; endif ?>" href="<?PHP echo base_url("Accueil");?>">Accueil</a>
                     </li>
-                    <li class="nav-item mr-4">
-                        <a class="nav-link" href="<?PHP echo base_url("Recherche");?>">Rechercher</a>
+                    <li class="nav-item <?php if($menu == 'recherche') : echo 'active'; endif ?> mr-4">
+                        <a class="nav-link <?php if($menu == 'recherche') : echo 'font-weight-bold'; endif ?>" href="<?PHP echo base_url("Recherche");?>">Rechercher</a>
                     </li>
-                    <li class="nav-item mr-4">
-                        <a class="nav-link" href="<?PHP echo base_url("Favoris");?>">Favoris</a>
+                    <li class="nav-item <?php if($menu == 'favoris') : echo 'active'; endif ?> mr-4">
+                        <a class="nav-link <?php if($menu == 'favoris') : echo 'font-weight-bold'; endif ?>" href="<?PHP echo base_url("Favoris");?>">Favoris</a>
                     </li>
-                    <li class="nav-item mr-4">
-                        <a class="nav-link" href="<?PHP echo base_url("Cinema");?>">Cinémas</a>
+                    <li class="nav-item <?php if($menu == 'cinema') : echo 'active'; endif ?> mr-4">
+                        <a class="nav-link <?php if($menu == 'cinema') : echo 'font-weight-bold'; endif ?>" href="<?PHP echo base_url("Cinema");?>">Cinémas</a>
                     </li>
-                    <li class="nav-item mr-4">
-                        <a class="nav-link" href="<?PHP echo base_url("Profil");?>">Profil</a>
+                    <li class="nav-item <?php if($menu == 'profil') : echo 'active'; endif ?> mr-4">
+                        <a class="nav-link <?php if($menu == 'profil') : echo 'font-weight-bold'; endif ?>" href="<?PHP echo base_url("Profil");?>">Profil</a>
                     </li>
                     <?php
                     if($this->session->userdata('admin') == 1) :
                     ?>
-                    <li class="nav-item mr-4">
-                        <a class="nav-link" href="<?PHP echo base_url("Admin");?>">Admin</a>
+                    <li class="nav-item <?php if($menu == 'admin') : echo 'active'; endif ?> mr-4">
+                        <a class="nav-link <?php if($menu == 'admin') : echo 'font-weight-bold'; endif ?>" href="<?PHP echo base_url("Admin");?>">Admin</a>
                     </li>
                     <?php
                     endif;

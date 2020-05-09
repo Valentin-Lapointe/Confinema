@@ -81,6 +81,7 @@ class Cinema extends CI_Controller
 
         // Chargement de la vue
         $data['main_content'] = 'Cinema/index';
+        $data['menu']           = 'cinema';
         $this->load->view('_templates/template', $data);
     }
 

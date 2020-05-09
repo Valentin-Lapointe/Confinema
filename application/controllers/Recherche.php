@@ -16,6 +16,7 @@ class Recherche extends CI_Controller
 
         // Chargement de la vue
         $data['main_content'] = 'Recherche/index';
+        $data['menu']           = 'recherche';
         $data['css_file']		= $this->load_css();
         $data['js_file']		= $this->load_js();
         $this->load->view('_templates/template', $data);

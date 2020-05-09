@@ -19,6 +19,7 @@ class Admin extends CI_Controller
 
         // Chargement de la vue
         $data['main_content'] = 'Admin/index';
+        $data['menu']           = 'admin';
         $data['css_file'] = $this->load_css();
         $data['js_file'] = $this->load_js();
         $this->load->view('_templates/template', $data);
@@ -78,6 +79,7 @@ class Admin extends CI_Controller
 
         // Chargement de la vue
         $data['main_content'] = 'Admin/ajouter_cinema';
+        $data['menu']           = 'admin';
         $data['css_file'] = $this->load_css();
         $data['js_file'] = $this->load_js();
         $this->load->view('_templates/template', $data);

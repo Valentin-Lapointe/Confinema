@@ -41,7 +41,8 @@ class Accueil extends CI_Controller {
         $data['film_a_venir'] = $film->results;
 
         // Chargement de la vue
-        $data['main_content'] = 'Accueil/index';
+        $data['main_content']   = 'Accueil/index';
+        $data['menu']           = 'accueil';
         $data['css_file']		= $this->load_css();
         $data['js_file']		= $this->load_js();
         $this->load->view('_templates/template',$data);
@@ -62,6 +63,7 @@ class Accueil extends CI_Controller {
 
         // Chargement de la vue
         $data['main_content'] = 'Accueil/afficher';
+        $data['menu']           = 'accueil';
         $data['css_file']		= $this->load_css();
         $data['js_file']		= $this->load_js();
         $this->load->view('_templates/template',$data);
