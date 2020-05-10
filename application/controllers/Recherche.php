@@ -23,8 +23,10 @@ class Recherche extends CI_Controller
     }
 
     public function ajax_getMovies(){
-        $name = $this->input->post('name');
 
+        $utilisateurFilmObj = new Utilisateur_film_model();
+
+        $name = $this->input->post('name');
         $html = '';
 
         if(!empty($name))
@@ -42,23 +44,39 @@ class Recherche extends CI_Controller
             foreach ($movies as $item) {
 
                 $html .= '<tr>';
-                $html .= '<td>';
-                $html .= '<div class="row">';
-                $html .= '<div class="col-lg-3">';
-                $html .= '<img src="https://image.tmdb.org/t/p/w220_and_h330_face/' . $item->poster_path . '" style="height: 300px;width: 200px">';
-                $html .= '</div>';
-                $html .= '<div class="col-lg-9">';
-                $html .= '<a href="' . base_url('Accueil/afficher/' . $item->id) . '"><h4 class="text-center mb-5 font-weight-bold">' . $item->title . '</h4></a>';
+                    $html .= '<td>';
+                        $html .= '<div class="row">';
+                            $html .= '<div class="col-lg-3">';
+                                $html .= '<img src="https://image.tmdb.org/t/p/w220_and_h330_face/' . $item->poster_path . '" style="height: 300px;width: 200px">';
+                            $html .= '</div>';
+                        $html .= '<div class="col-lg-9">';
+                            $html .= '<h4 class="text-center mb-5 font-weight-bold">';
+                                $html .= '<a href="' . base_url('Accueil/afficher/'. $item->id) .'">'. $item->title .'</a>';
+                                $html .= '<span id="span_'.$item->id.'">';
 
-                if (!empty($item->overview)) :
-                    $html .= '<p class="mt-5">' . $item->overview . '</p>';
-                else :
-                    $html .= '<p class="mt-5 text-center font-italic">Inconnu</p>';
-                endif;
+                                    $film = $utilisateurFilmObj->get($item->id);
+                                    if($film):
+                                        $html .= '<a href="#" id="like_'.$item->id.'" onclick="unlikeMovie('.$item->id.')">';
+                                            $html .= '<i class="fas fa-heart btn-lg"></i>';
+                                        $html .= '</a>';
+                                    else :
+                                        $html .= '<a href="#" id="like_'.$item->id.'" onclick="likeMovie('.$item->id.')">';
+                                            $html .= '<i class="far fa-heart btn-lg"></i>';
+                                        $html .= '</a>';
+                                    endif;
 
-                $html .= '</div>';
-                $html .= '</div>';
-                $html .= '</td>';
+                                $html .= '</span>';
+                                $html .= '</h4>';
+
+                            if (!empty($item->overview)) :
+                                $html .= '<p class="mt-5">' . $item->overview . '</p>';
+                            else :
+                                $html .= '<p class="mt-5 text-center font-italic">Inconnu</p>';
+                            endif;
+
+                            $html .= '</div>';
+                        $html .= '</div>';
+                    $html .= '</td>';
                 $html .= '</tr>';
 
             }
