@@ -45,6 +45,9 @@ if($this->session->userdata('id')) :
                     <?php
                     endif;
                     ?>
+                    <li class="nav-item <?php if($menu == 'contact') : echo 'active'; endif ?> mr-4">
+                        <a class="nav-link <?php if($menu == 'contact') : echo 'font-weight-bold'; endif ?>" href="<?PHP echo base_url("Contact");?>">Contact</a>
+                    </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <a class="nav-link" href="<?PHP echo base_url("Connexion/deconnexion");?>">Deconnexion</a>
