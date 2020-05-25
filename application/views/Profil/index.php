@@ -61,7 +61,7 @@
                 <td>
                     <div class="row">
                         <div class="mt-3 col-lg-12">
-                            <a href="">Modifier le mot de passe</a>
+                            <a href="<?php echo base_url('Profil/change_password') ?>">Modifier le mot de passe</a>
                         </div>
                     </div>
                 </td>

@@ -63,4 +63,31 @@ class Utilisateur_model extends CI_Model {
         $this->db->delete($this->table);
     }
 
+    function change_password($id_utilisateur, $last_password, $new_password){
+
+        $this->db->where($this->id_utilisateur, $id_utilisateur);
+        $query = $this->db->get($this->table);
+        $user = $query->row();
+
+        if($user){
+            if(password_verify($last_password, $user->password)){
+
+                $data = array(
+                    'password' => password_hash($new_password, PASSWORD_DEFAULT)
+                );
+
+                $this->db->where($this->id_utilisateur, $id_utilisateur);
+                $this->db->update($this->table,$data);
+
+                return TRUE;
+
+            }else{
+                return FALSE;
+            }
+        }else{
+            return FALSE;
+        }
+
+    }
+
 }
