@@ -26,6 +26,45 @@ class Admin extends CI_Controller
     }
 
 
+    public function ajax_changeAdmin(){
+        $utilisateurObj = new Utilisateur_model();
+
+        $id_utilisateur = $this->input->post('id_utilisateur');
+        $etat = $this->input->post('etat');
+
+        if($etat == 0){
+            $data = array(
+                'admin' => 0,
+            );
+            $utilisateurObj->update($id_utilisateur, $data);
+        }else{
+            $data = array(
+                'admin' => 1,
+            );
+            $utilisateurObj->update($id_utilisateur, $data);
+        }
+    }
+
+    public function ajax_changeBan(){
+        $utilisateurObj = new Utilisateur_model();
+
+        $id_utilisateur = $this->input->post('id_utilisateur');
+        $etat = $this->input->post('etat');
+
+        if($etat == 0){
+            $data = array(
+                'ban' => 0,
+            );
+            $utilisateurObj->update($id_utilisateur, $data);
+        }else{
+            $data = array(
+                'ban' => 1,
+            );
+            $utilisateurObj->update($id_utilisateur, $data);
+        }
+    }
+
+
 
     public function ajouter_cinema(){
         $cinemaObj = new Cinema_model();

@@ -31,11 +31,11 @@
                         </div>
 
                         <div class="col-lg-4 text-center">
-                            <select class="custom-select" name="" id="">
+                            <select class="custom-select" name="" id="selectAdmin" onchange="changeAdmin(<?php echo $item->id_utilisateur ?>)">
                                 <option value="0" <?php if($item->admin == 0){echo'selected="selected"';}?>>Non Admin</option>
                                 <option value="1" <?php if($item->admin == 1){echo'selected="selected"';}?>>Admin</option>
                             </select> <br>
-                            <select class="custom-select" name="" id="">
+                            <select class="custom-select" name="" id="selectBan" onchange="changeBan(<?php echo $item->id_utilisateur ?>)">
                                 <option value="0" <?php if($item->ban == 0){echo'selected="selected"';}?>>Non Banni</option>
                                 <option value="1" <?php if($item->ban == 1){echo'selected="selected"';}?>>Banni</option>
                             </select>
